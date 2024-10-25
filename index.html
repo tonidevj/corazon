@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love You</title>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"></script>
+    <link rel="shortcut icon" href="./icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <style>
+        #video {
+            display: none; /* Oculta el video */
+        }
+    </style>
+</head>
+<body>    
+  <div id="drag-container">          
+    <p></p>
+  </div>
+
+  <div id="canva">
+      <canvas id="canvas"></canvas>
+  </div>
+
+    <iframe id="video" src="https://www.youtube.com/embed/eTKeQhYVvbQ?autoplay=1&loop=1&playlist=eTKeQhYVvbQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const video = document.getElementById('video');
+
+            video.addEventListener('click', function() {
+                video.style.display = 'block'; // Muestra el iframe cuando se hace clic
+                video.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*'); // Inicia la reproducción
+            });
+        });
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>
