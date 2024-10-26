@@ -13,7 +13,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <style>
         #video {
-            display: none; /* Oculta el video */
+            display: flex;
+            justify-content: end;
+            align-items: end;
+            width: 1rem;
+            height: 1rem; /* Oculta el video */
         }
     </style>
 </head>
@@ -25,14 +29,17 @@
   <div id="canva">
       <canvas id="canvas"></canvas>
   </div>
-
+  
+  <lite-youtube videoid="eTKeQhYVvbQ" id="video"></lite-youtube>
     <iframe id="video" src="https://www.youtube.com/embed/eTKeQhYVvbQ?autoplay=1&loop=1&playlist=eTKeQhYVvbQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-    <script>
+    <script> 
         document.addEventListener("DOMContentLoaded", function() {
-            const video = document.getElementById('video');
+            const liteYoutube = document.getElementById('lite-youtube');
+            const video = document.getElementById('video')
 
-            video.addEventListener('click', function() {
+            // Esperar a que el video de lite-youtube esté listo
+            liteYoutube.addEventListener('click', function() {
                 video.style.display = 'block'; // Muestra el iframe cuando se hace clic
                 video.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*'); // Inicia la reproducción
             });
